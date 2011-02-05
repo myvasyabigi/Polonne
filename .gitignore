@@ -1,0 +1,5 @@
+.svn/
+src/polonne/tmp/
+local_settings.py
+*.pyc
+src/polonne/media/admin
