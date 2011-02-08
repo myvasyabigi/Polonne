@@ -1,4 +1,5 @@
 .svn/
+media/
 src/polonne/tmp/
 local_settings.py
 *.pyc

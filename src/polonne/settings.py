@@ -29,7 +29,7 @@ DATABASES = {
 }
 
 TIME_ZONE = 'Europe/Kiev'
-LANGUAGE_CODE = 'ua-ua'
+LANGUAGE_CODE = 'ua'
 
 LANGUAGES = (
     ('ua', ('Ukrainian')),
@@ -59,6 +59,7 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'localeurl.middleware.LocaleURLMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -72,18 +73,34 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_PATH, 'templates'),
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.core.context_processors.auth",
+    "django.core.context_processors.request",
+)
+
 INSTALLED_APPS = (
+    'localeurl',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
+    'grappelli',
     'django.contrib.admin',
     'south',
     'transmeta',
     'sorl.thumbnail',
-    'localeurl',
+    'django_extensions',
+    
+    # apps
+    'people',
+    'articles',
+    'news',
+    'gallery'
 )
+
+# Grappelli configuration
+GRAPPELLI_ADMIN_TITLE = 'Polonne.info'
 
 try:
     from local_settings import *
